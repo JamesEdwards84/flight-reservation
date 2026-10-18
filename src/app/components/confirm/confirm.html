@@ -1,0 +1,17 @@
+@if (dialogRef) {
+<h2 mat-dialog-title>Confirm reservation</h2>
+<mat-dialog-content>
+    Confirm booking flight {{ data?.flightNumber }} for {{ data?.passengerName }}?
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-flat-button type="button" [mat-dialog-close]="true">Confirm booking</button>
+</mat-dialog-actions>
+} @else {
+<main class="confirmation-page">
+    <section class="confirmation-card" aria-labelledby="confirmation-title">
+        <h1 id="confirmation-title">Reservation confirmed</h1>
+        <p>Your flight reservation has been saved successfully.</p>
+    </section>
+</main>
+}

@@ -1,0 +1,50 @@
+.login-page {
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgb(33 150 243 / 12%), transparent 42%),
+    var(--mat-sys-surface);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  border-radius: 1.25rem;
+  box-sizing: border-box;
+  max-width: 28rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+mat-card-header {
+  margin-bottom: 1.5rem;
+}
+
+mat-card-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+mat-card-subtitle {
+  margin-top: 0.5rem;
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit-button {
+  min-height: 3rem;
+  margin-top: 0.5rem;
+}
+
+.login-error {
+  color: var(--mat-sys-error);
+  margin: 0;
+}

@@ -1,0 +1,27 @@
+<h2>{{ title }}</h2>
+<h4>{{ description }}</h4>
+
+<form [formGroup]="findFlightsForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="departureCity">{{ fromCityLabel }}:</label>
+        <input type="text" id="departureCity" formControlName="departureCity" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="arrivalCity">{{ toCityLabel }}:</label>
+        <input type="text" id="arrivalCity" formControlName="arrivalCity" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="dateOfDeparture">{{ departureDateLabel }}:</label>
+        <input type="date" id="dateOfDeparture" formControlName="dateOfDeparture" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ buttonText }}</button>
+</form>
+
+@if (flights().length > 0) {
+<app-display-flights [flights]="flights()"></app-display-flights>
+} @else {
+<h3>No flights found.</h3>
+}

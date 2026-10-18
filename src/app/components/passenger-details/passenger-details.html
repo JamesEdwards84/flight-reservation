@@ -1,0 +1,107 @@
+<main class="passenger-page">
+    <mat-card class="passenger-card">
+        <mat-card-header>
+            <div class="heading">
+                <button mat-icon-button type="button" aria-label="Back to find flights"
+                    (click)="returnToFlightSearch()">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+                <div>
+                    <mat-card-title>Passenger details</mat-card-title>
+                    <mat-card-subtitle>Enter the passenger information for this reservation.</mat-card-subtitle>
+                </div>
+            </div>
+        </mat-card-header>
+
+        <mat-card-content>
+            @if (isLoadingFlight()) {
+            <p role="status">Loading your selected flight…</p>
+            } @else if (flight(); as selectedFlight) {
+            <section class="flight-summary" aria-labelledby="flight-summary-title">
+                <h2 id="flight-summary-title">Your selected flight</h2>
+                <dl>
+                    <div>
+                        <dt>Flight number</dt>
+                        <dd>{{ selectedFlight.flightNumber }}</dd>
+                    </div>
+                    <div>
+                        <dt>Airline</dt>
+                        <dd>{{ selectedFlight.operatingAirlines }}</dd>
+                    </div>
+                    <div>
+                        <dt>Route</dt>
+                        <dd>{{ selectedFlight.departureCity }} to {{ selectedFlight.arrivalCity }}</dd>
+                    </div>
+                    <div>
+                        <dt>Date of departure</dt>
+                        <dd>{{ selectedFlight.dateOfDeparture }}</dd>
+                    </div>
+                    <div>
+                        <dt>Departure time</dt>
+                        <dd>{{ selectedFlight.estimatedTimeOfDeparture }}</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <form [formGroup]="passengerForm" (ngSubmit)="onSubmit()">
+                <h2>Passenger information</h2>
+                <div class="form-fields">
+                    <mat-form-field appearance="outline">
+                        <mat-label>First name</mat-label>
+                        <input matInput formControlName="firstName" autocomplete="given-name" required />
+                        @if (passengerForm.controls.firstName.hasError('required') &&
+                        passengerForm.controls.firstName.touched) {
+                        <mat-error>Enter the passenger's first name.</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Middle name</mat-label>
+                        <input matInput formControlName="middleName" autocomplete="additional-name" />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last name</mat-label>
+                        <input matInput formControlName="lastName" autocomplete="family-name" required />
+                        @if (passengerForm.controls.lastName.hasError('required') &&
+                        passengerForm.controls.lastName.touched) {
+                        <mat-error>Enter the passenger's last name.</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email" autocomplete="email" required />
+                        @if (passengerForm.controls.email.hasError('required') &&
+                        passengerForm.controls.email.touched) {
+                        <mat-error>Enter an email address.</mat-error>
+                        } @else if (passengerForm.controls.email.hasError('email') &&
+                        passengerForm.controls.email.touched) {
+                        <mat-error>Enter a valid email address.</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input matInput type="tel" formControlName="phone" autocomplete="tel" required />
+                        @if (passengerForm.controls.phone.hasError('required') &&
+                        passengerForm.controls.phone.touched) {
+                        <mat-error>Enter a phone number.</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+
+                @if (errorMessage()) {
+                <p class="form-error" role="alert">{{ errorMessage() }}</p>
+                }
+
+                <button mat-flat-button type="submit" [disabled]="passengerForm.invalid || isSubmitting()">
+                    {{ isSubmitting() ? 'Saving reservation…' : 'Continue' }}
+                </button>
+            </form>
+            } @else {
+            <p class="form-error" role="alert">{{ errorMessage() }}</p>
+            }
+        </mat-card-content>
+    </mat-card>
+</main>

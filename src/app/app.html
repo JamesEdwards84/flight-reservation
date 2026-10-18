@@ -1,0 +1,8 @@
+@if (!isLoginPage() && loginService.isLoggedIn()) {
+<header class="session-bar">
+  <span class="session-username">{{ loginService.getUsername() ?? 'User' }}</span>
+  <button class="logout-button" type="button" (click)="logout()">Log out</button>
+</header>
+}
+
+<router-outlet />

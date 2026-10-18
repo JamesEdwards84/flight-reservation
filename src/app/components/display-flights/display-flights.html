@@ -1,0 +1,31 @@
+<div class="table-container">
+    <table>
+        <caption>Available flights</caption>
+        <thead>
+            <tr>
+                <th scope="col">Flight Number</th>
+                <th scope="col">Operating Airlines</th>
+                <th scope="col">Departure City</th>
+                <th scope="col">Arrival City</th>
+                <th scope="col">Date of Departure</th>
+                <th scope="col">Time of Departure</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (flight of flights(); track flight.id) {
+            <tr>
+                <td>{{ flight.flightNumber }}</td>
+                <td>{{ flight.operatingAirlines }}</td>
+                <td>{{ flight.departureCity }}</td>
+                <td>{{ flight.arrivalCity }}</td>
+                <td>{{ flight.dateOfDeparture }}</td>
+                <td>{{ flight.estimatedTimeOfDeparture }}</td>
+                <td>
+                    <button mat-flat-button (click)="bookFlight(flight)" class="btn btn-primary">Book</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

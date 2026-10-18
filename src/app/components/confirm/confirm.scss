@@ -1,0 +1,19 @@
+.confirmation-page {
+  display: grid;
+  min-height: 50vh;
+  padding: 2rem 1rem;
+  place-items: center;
+}
+
+.confirmation-card {
+  background: var(--mat-sys-surface-container-low);
+  border-radius: 1rem;
+  max-width: 36rem;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.confirmation-card h1 {
+  color: var(--mat-sys-primary);
+}

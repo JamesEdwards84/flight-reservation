@@ -1,0 +1,123 @@
+:host {
+  display: block;
+  width: min(100% - 2rem, 60rem);
+  margin: clamp(2rem, 8vh, 5rem) auto;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  color: #172b4d;
+  background: #fff;
+  border: 1px solid #e2eaf3;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2.5rem rgb(23 43 77 / 10%);
+}
+
+h2 {
+  margin: 0;
+  color: #123b67;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+h4 {
+  margin: 0.65rem 0 2rem;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-control {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.875rem;
+  color: #172b4d;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font: inherit;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+.form-control:hover {
+  border-color: #94a3b8;
+}
+
+.form-control:focus {
+  background: #fff;
+  border-color: #1479c9;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(20 121 201 / 16%);
+}
+
+.btn-primary {
+  grid-column: 1 / -1;
+  min-height: 3rem;
+  margin-top: 0.25rem;
+  padding: 0.75rem 1.25rem;
+  color: #fff;
+  background: #1479c9;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  transition:
+    background-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.btn-primary:hover {
+  background: #0f65aa;
+  box-shadow: 0 0.4rem 0.9rem rgb(20 121 201 / 22%);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid rgb(20 121 201 / 35%);
+  outline-offset: 3px;
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 36rem) {
+  :host {
+    box-sizing: border-box;
+    width: calc(100% - 2rem);
+    margin: 1.5rem auto;
+  }
+
+  form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .form-group:nth-child(3),
+  .btn-primary {
+    grid-column: auto;
+  }
+}
